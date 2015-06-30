@@ -24,23 +24,30 @@ namespace Problema_3._2
                 if (parent.color == Color.Red)
                     colorToPaint = Color.Blue;
                 else
-                    colorToPaint = Color.Red; 
+                    colorToPaint = Color.Red;
+
+                bool isImportant = false;
+
                 for (int i = 0; i < parent.children.Count; i++) {
                     Node child = parent.children[i];
+                    isImportant = true;
                     if (child.color == parent.color)
                         return false;
 
                     if (child.color == Color.None) {
+                        child.importantRelation = true;
                         child.color = colorToPaint;
                         s.Push(child);   
                     }
                 }
-
+                if (!parent.importantRelation)
+                    parent.importantRelation = isImportant; 
                 
             }
 
             return true;
         }
+
         static void Main(string[] args)
         {
             List<Node> tree = new List<Node>();
@@ -67,16 +74,34 @@ namespace Problema_3._2
             }
 
             //Print blue ones:
-            List<Node> Blues = new List<Node>(), Reds = new List<Node>();
+            List<Node> Blues = new List<Node>(), Reds = new List<Node>(),notImportant = new List<Node>();
+            //
             for (int i = 0; i < tree.Count; i++)
             {
                 Node n = tree[i];
-                if (n.color == Color.Blue)
+                if (n.importantRelation)
+                {
+                    if (n.color == Color.Blue)
+                        Blues.Add(n);
+                    else
+                        Reds.Add(n);
+
+                }
+                else
+                    notImportant.Add(n); //Not important elements are used to play around after important ones have been distributed.
+            }
+
+            for (int i = 0; i < notImportant.Count; i++) {
+                Node n = notImportant[i];
+                if (Blues.Count < Reds.Count)
                     Blues.Add(n);
                 else
                     Reds.Add(n);
             }
 
+            //Sort blues and Reds.
+            Blues.Sort(delegate (Node n1, Node n2) { return n1.value.CompareTo(n2.value); });
+            Reds.Sort(delegate (Node n1, Node n2) { return n1.value.CompareTo(n2.value); });
             Console.WriteLine(Blues.Count);
             for (int i = 0; i < Blues.Count; i++)
             {
@@ -91,7 +116,7 @@ namespace Problema_3._2
                 Console.Write(n.value + " ");
             }
             Console.WriteLine();
-            Console.WriteLine("Number of ops: " + count);
+            //Console.WriteLine("Number of ops: " + count);
             Console.Read();
 
             

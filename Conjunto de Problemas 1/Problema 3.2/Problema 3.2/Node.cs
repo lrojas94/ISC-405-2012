@@ -17,6 +17,7 @@ namespace Problema_3._2
         public int value;
         public List<Node> children = new List<Node>();
         public bool check = false;
+        public bool importantRelation; //Checks if it is important to keep them separated.
         public Color color = Color.None;
 
         public Node(int value) {

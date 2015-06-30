@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Problema_2._1
+namespace Problema_2._2
 {
     class BinaryIndexTree
     {

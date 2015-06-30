@@ -7,8 +7,8 @@
     <ProjectGuid>{7FD4CC4A-237B-4F9F-A1DC-B804A967B161}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Problema_2._1</RootNamespace>
-    <AssemblyName>Problema 2.1</AssemblyName>
+    <RootNamespace>Problema_2._2</RootNamespace>
+    <AssemblyName>Problema 2.2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
